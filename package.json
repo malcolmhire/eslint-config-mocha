@@ -1,0 +1,63 @@
+{
+    "name": "@dwp/eslint-config-mocha",
+    "version": "1.0.0",
+    "author": "Adam Moss",
+    "license": "ISC",
+    "description": "mocha configuration for eslint",
+    "keywords": [
+        "config",
+        "shareable-config",
+        "eslint",
+        "lint",
+        "mocha"
+    ],
+    "homepage": "https://github.com/dwp/eslint-config-mocha",
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com:dwp/eslint-config-mocha.git"
+    },
+    "bugs": {
+        "url": "https://github.com/dwp/eslint-config-mocha/issues"
+    },
+    "files": [
+        "src/**",
+        "tests/.eslintrc.json"
+    ],
+    "main": "src/index.js",
+    "scripts": {
+        "precommit": "lint-staged",
+        "commitmsg": "commitlint --edit",
+        "test": "npm run pipeline",
+        "pipeline": "npm run compliance-tests && npm run security-tests && npm run unit-tests && npm run quality-tests",
+        "compliance-tests": "npm run compliance:commitlint && npm run compliance:eslint",
+        "compliance:commitlint": "commitlint --from=develop --to=HEAD",
+        "compliance:eslint": "eslint --ignore-path .gitignore .",
+        "security-tests": "npm run security:outdated && npm run security:nsp",
+        "security:outdated": "npm outdated || true",
+        "security:nsp": "nsp check #",
+        "security:snyk": "snyk test -dev",
+        "unit-tests": "npm run unit:test",
+        "unit:test": "nyc --report-dir .coverage/unit mocha ./tests/**/*.spec.js",
+        "quality-tests": "npm run quality:sonarjs",
+        "quality:sonarjs": "sonarjs -e 'tests/**'",
+        "quality:sonar-scanner": "sonar-scanner"
+    },
+    "dependencies": {
+        "eslint-plugin-mocha": "^5.0.0"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "6.0.2",
+        "@dwp/commitlint-config-base": "1.0.0",
+        "@dwp/eslint-config-base": "1.0.0",
+        "@dwp/nyc-config-base": "1.0.0",
+        "chai": "^4.1.2",
+        "eslint": "4.15.0",
+        "husky": "0.14.3",
+        "lint-staged": "6.0.0",
+        "mocha": "^5.1.0",
+        "nsp": "3.1.0",
+        "nyc": "11.4.1",
+        "snyk": "1.68.0",
+        "sonarjs": "1.0.0"
+    }
+}
