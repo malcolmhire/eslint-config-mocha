@@ -1,7 +1,7 @@
 {
     "name": "@dwp/eslint-config-mocha",
     "version": "1.0.0",
-    "author": "Adam Moss",
+    "author": "Adam Moss & Mike Shaw",
     "license": "ISC",
     "description": "mocha configuration for eslint",
     "keywords": [
