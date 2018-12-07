@@ -5,7 +5,7 @@ Shareable [`eslint`](http://eslint.org) config enforcing our lint and style conv
 ## Getting started
 
 ```sh
-npm install --save-dev @dwp/eslint-config-base eslint
+npm install --save-dev @dwp/eslint-config-mocha eslint
 ```
 
 ## Rules
