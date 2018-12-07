@@ -1,4 +1,4 @@
 module.exports = {
-  '*.js': 'npm run compliance:eslint',
-  'package.json': ['npm run security:outdated', 'npm run security:nsp'],
+  '*.js': 'npm run compliance:lint',
+  'package.json': ['npm run security:outdated', 'npm run security:audit'],
 };
