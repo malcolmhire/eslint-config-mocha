@@ -1,6 +1,6 @@
 module.exports = {
-  "hooks": {
-    "commit-msg": "commitlint --edit",
-    "pre-commit": "lint-staged"
+  'hooks': {
+    'commit-msg': 'commitlint --edit',
+    'pre-commit': 'lint-staged'
   }
 }
