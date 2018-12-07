@@ -31,7 +31,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "npm run pipeline",
-    "pipeline": "npm run compliance-tests && npm run security-tests && npm run unit-tests && npm run quality-tests",
+    "pipeline": "npm run compliance-tests && npm run security-tests && npm run unit-tests",
     "compliance-tests": "npm run compliance:commitlint && npm run compliance:eslint",
     "compliance:commitlint": "commitlint --from=develop --to=HEAD",
     "compliance:eslint": "eslint --ignore-path .gitignore .",
@@ -40,10 +40,7 @@
     "security:nsp": "nsp check #",
     "security:snyk": "snyk test -dev",
     "unit-tests": "npm run unit:test",
-    "unit:test": "nyc --report-dir .coverage/unit mocha ./tests/**/*.spec.js",
-    "quality-tests": "npm run quality:sonarjs",
-    "quality:sonarjs": "sonarjs -e 'tests/**'",
-    "quality:sonar-scanner": "sonar-scanner"
+    "unit:test": "nyc --report-dir .coverage/unit mocha ./tests/**/*.spec.js"
   },
   "dependencies": {
     "eslint-plugin-mocha": "5.2.0"
@@ -60,7 +57,6 @@
     "mocha": "5.2.0",
     "nsp": "3.2.1",
     "nyc": "13.1.0",
-    "snyk": "1.116.2",
-    "sonarjs": "1.0.0"
+    "snyk": "1.116.2"
   }
 }
