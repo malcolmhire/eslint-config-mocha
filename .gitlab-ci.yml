@@ -5,13 +5,6 @@
 .node-image: &node-image
   image: node:10.14.1-alpine@sha256:35fcf0a48f57bef4bafa0f844f62edb659d036364a1d086995efe5b43ca0c4af
 
-.blackduck-image: &blackduck-image
-  image: $CI_REGISTRY/provisioning/blackduck-cli@sha256:10c0a7b022d40ec973a2af1ff418212e265d20d8c85adff836e871d2c00a5b64
-
-.blackduck-script: &blackduck-script
-  script:
-    - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
-
 .checkmarx-image: &checkmarx-image
   image: $CI_REGISTRY/provisioning/checkmarx-cli:latest
 
@@ -124,23 +117,6 @@ nsp:
   script:
     - npm run security:audit
 
-blackduck:
-  stage: security-tests
-  <<: *executor-docker
-  <<: *blackduck-image
-  <<: *dependency-npm
-  <<: *blackduck-script
-  <<: *not-branches
-
-blackduck-branch:
-  stage: security-tests
-  <<: *executor-docker
-  <<: *blackduck-image
-  <<: *dependency-npm
-  <<: *blackduck-script
-  <<: *only-branches
-  when: manual
-
 checkmarx:
   stage: security-tests
   <<: *executor-docker
@@ -172,7 +148,7 @@ unit:
 sonar-scanner:
   stage: quality-tests
   <<: *executor-docker
-  image: $CI_REGISTRY/provisioning/docker-sonar-scanner:latest
+  image: $CI_REGISTRY/engineering-practice/sonar-scanner:latest
   <<: *dependency-unit
   script:
     - sed -i.bak -e "s|^SF:\(.*/[[:digit:]]\{1,\}/.*/\)|SF:$( pwd )/|g" .coverage/unit/lcov.info
