@@ -1,6 +1,9 @@
 {
   "extends": "@dwp/nyc-config-base",
   "exclude": [
-    "*.config.js"
+    "*.config.js",
+    ".eslintrc.js",
+    ".huskyrc.js",
+    ".coverage"
   ]
 }
