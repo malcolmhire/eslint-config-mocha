@@ -43,12 +43,12 @@
     "tests:unit": "nyc --report-dir .coverage/unit mocha \"tests/unit/**/*.spec.js\""
   },
   "dependencies": {
-    "eslint-plugin-mocha": "5.3.0"
+    "eslint-plugin-mocha": "6.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "8.0.0",
     "@dwp/commitlint-config-base": "1.1.0",
-    "@dwp/eslint-config-base": "2.1.0",
+    "@dwp/eslint-config-base": "4.0.0",
     "@dwp/nyc-config-base": "1.0.0",
     "chai": "4.2.0",
     "eslint": "6.0.1",
